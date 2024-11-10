@@ -13,7 +13,7 @@ class Car {
   width: number;
 
   constructor() {
-    let direction = PI / 2; // start direction
+    let direction = Math.PI / 2; // start direction
     let v = 10; // start velocity
     let coord = { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT / 4 }; // coordinates
     let height = 20; // height
