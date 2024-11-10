@@ -10,7 +10,7 @@ class Tile {
 
   constructor(x, y) {
     // edges { l: Left, r: Right, t: Top, b: Bottom }. false is no edge, true is edge
-    let edge = { l: false, r: false, t: false, b: false };
+    this.edge = { l: false, r: false, t: false, b: false };
     this.x = x;
     this.y = y;
     this.sideLength = SIDE_LENGTH;
