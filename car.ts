@@ -13,12 +13,12 @@ class Car {
   width: number;
 
   constructor() {
-    let direction = Math.PI / 2; // start direction
-    let v = 10; // start velocity
-    let coord = { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT / 4 }; // coordinates
-    let height = 20; // height
-    let width = 20; // width
-    let rotationSpeed = 0.15;
+    this.direction = Math.PI / 2; // start direction
+    this.v = 10; // start velocity
+    this.coord = { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT / 4 }; // coordinates
+    this.height = 20; // height
+    this.width = 20; // width
+    this.rotationSpeed = 0.15;
   }
 
   /**
