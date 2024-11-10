@@ -51,11 +51,44 @@ class Car {
   }
 
   getBoundingBox() {
+    const cos = Math.cos(this.direction);
+    const sin = Math.sin(this.direction);
+
+    // Calculate the half dimensions
+    const hw = this.width / 2;
+    const hh = this.height / 2;
+
+    // Calculate the four corners of the rotated rectangle
+    const corners = [
+      {
+        x: this.coord.x + cos * hw - sin * hh,
+        y: this.coord.y + sin * hw + cos * hh,
+      },
+      {
+        x: this.coord.x - cos * hw - sin * hh,
+        y: this.coord.y - sin * hw + cos * hh,
+      },
+      {
+        x: this.coord.x + cos * hw + sin * hh,
+        y: this.coord.y + sin * hw - cos * hh,
+      },
+      {
+        x: this.coord.x - cos * hw + sin * hh,
+        y: this.coord.y - sin * hw - cos * hh,
+      },
+    ];
+
+    // Find the minimum and maximum x and y coordinates
+    const left = Math.min(...corners.map((c) => c.x));
+    const right = Math.max(...corners.map((c) => c.x));
+    const top = Math.min(...corners.map((c) => c.y));
+    const bottom = Math.max(...corners.map((c) => c.y));
+
     return {
-      left: this.coord.x - this.width / 2,
-      right: this.coord.x + this.width / 2,
-      top: this.coord.y - this.height / 2,
-      bottom: this.coord.y + this.height / 2,
+      left,
+      right,
+      top,
+      bottom,
     };
   }
 }
