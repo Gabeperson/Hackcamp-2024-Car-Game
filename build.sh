@@ -1,0 +1,1 @@
+tsc main.ts car.ts tile.ts
