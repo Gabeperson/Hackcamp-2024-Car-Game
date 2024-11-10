@@ -33,7 +33,7 @@ class Car {
       this.direction -= this.rotationSpeed;
     }
 
-    this.coord.y -= this.v;
+    if (this.coord.y - this.v <= CANVAS_HEIGHT) this.coord.y -= this.v;
 
     // update position based on velocity and direction
     this.coord.x += Math.cos(this.direction) * this.v;
