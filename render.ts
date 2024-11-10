@@ -26,6 +26,18 @@ function drawRect(x: number, y: number, size: number, rot: number) {
     ctx.translate(-x, -y);
 }
 
+function drawCircle(x: number, y: number, size: number) {
+    ctx.beginPath();
+    ctx.arc(x, y, size, 0, 2*PI);
+    // ctx.lineWidth = 4;
+    // ctx.strokeStyle = "blue";
+    ctx.stroke();
+}
+
+function drawText(x: number, y: number, text: string) {
+    ctx.fillText(text, x, y);
+}
+
 function drawImage(image: HTMLImageElement, x: number, y: number,
     width: number, height: number, rot: number) {
     ctx.translate(x, y);
@@ -33,6 +45,15 @@ function drawImage(image: HTMLImageElement, x: number, y: number,
     ctx.drawImage(image, -width / 2, -height / 2, width, height);
     ctx.rotate(-rot);
     ctx.translate(-x, -y);
+}
+
+function drawLine(start: [number, number], end: [number, number]) {
+    let [sx, sy] = start;
+    let [ex, ey] = end;
+    ctx.beginPath();
+    ctx.moveTo(sx, sy);
+    ctx.lineTo(ex, ey);
+    ctx.stroke();
 }
 
 function drawRoad(carX: number, carY: number,

@@ -7,6 +7,7 @@ class Tile {
   x: number;
   y: number;
   sideLength: number;
+  id: number;
 
   constructor(x, y) {
     // edges { l: Left, r: Right, t: Top, b: Bottom }. false is no edge, true is edge
