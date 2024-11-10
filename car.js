@@ -1,17 +1,26 @@
 // width & height
-let CANVAS_WIDTH = 200;
-let CANVAS_HEIGHT = 400;
+const CANVAS_WIDTH = 200;
+const CANVAS_HEIGHT = 400;
+// PI constant so we dont have to always type Math.PI
+const PI = Math.PI;
+// canvas
+const canvas = document.getElementById("canvas");
+// key events
+let keys = { ArrowRight: false, ArrowLeft: false };
 
 class Car {
   constructor() {
-    let direction = Math.PI / 2; // start direction
+    let direction = PI / 2; // start direction
     let v = 10; // start velocity
-    let coord = { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT / 4 }; // coordunates
-    height = 20; // height
-    width = 20; // width
+    let coord = { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT / 4 }; // coordinates
+    let height = 20; // height
+    let width = 20; // width
     rotationSpeed = 0.15;
   }
 
+  /**
+   *
+   */
   update() {
     // update direction on key press
     if (keys.ArrowLeft) {
@@ -37,11 +46,7 @@ class Car {
   }
 }
 
-// canvas
-const canvas = document.getElementById("canvas");
-
-// key events
-let keys = { ArrowRight: false, ArrowLeft: false };
+function collisionDetection() {}
 
 document.addEventListener("keydown", (e) => {
   if (keys.hasOwnProperty(e.key)) {
