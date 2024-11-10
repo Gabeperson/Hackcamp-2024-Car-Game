@@ -28,7 +28,7 @@ class Tile {
     if (edge.t) {
       ctx.beginPath();
       ctx.moveTo(this.x, this.y); // Starting point of the top border
-      ctx.lineTo(x + SIDE_LENGTH, this.y); // Ending point of the top border
+      ctx.lineTo(this.x + SIDE_LENGTH, this.y); // Ending point of the top border
       ctx.stroke();
     }
 
