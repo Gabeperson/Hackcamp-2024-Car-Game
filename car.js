@@ -18,6 +18,9 @@ class Car {
     rotationSpeed = 0.15;
   }
 
+  /**
+   *
+   */
   update() {
     // update direction on key press
     if (keys.ArrowLeft) {
