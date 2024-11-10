@@ -3,8 +3,6 @@ const CANVAS_WIDTH = 200;
 const CANVAS_HEIGHT = 400;
 // PI constant so we dont have to always type Math.PI
 const PI = Math.PI;
-// canvas
-const canvas = document.getElementById("canvas");
 // key events
 let keys = { ArrowRight: false, ArrowLeft: false };
 
@@ -15,7 +13,7 @@ class Car {
     let coord = { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT / 4 }; // coordinates
     let height = 20; // height
     let width = 20; // width
-    rotationSpeed = 0.15;
+    let rotationSpeed = 0.15;
   }
 
   /**
