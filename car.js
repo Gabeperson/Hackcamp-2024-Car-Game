@@ -43,6 +43,8 @@ class Car {
   }
 }
 
+function collisionDetection() {}
+
 document.addEventListener("keydown", (e) => {
   if (keys.hasOwnProperty(e.key)) {
     keys[e.key] = true;

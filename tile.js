@@ -1,16 +1,7 @@
-const HEIGHT = 50;
-const WIDTH = 50;
-
-class Rectangle {
-  constructor(height, width) {
-    this.height = height;
-    this.width = width;
-  }
-}
-
+const SIDE_LENGTH = 50; // change later if needed
 class Tile {
   constructor() {
-    let edge = { l: false, r: false, t: false, b: false };
-    let tile = new Rectangle(HEIGHT, WIDTH);
+    let edge = { l: false, r: false, t: false, b: false }; // edges { l: Left, r: Right, t: Top, b: Bottom }
+    let sideLength = SIDE_LENGTH;
   }
 }
