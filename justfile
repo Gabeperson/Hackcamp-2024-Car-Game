@@ -1,3 +1,4 @@
 build:
-    tsc main.ts
-    
+    ./build.sh
+clean:
+    rm main.js
