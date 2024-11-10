@@ -1,4 +1,4 @@
 build:
     ./build.sh
 clean:
-    ./clean.sh
+    rm -r web
