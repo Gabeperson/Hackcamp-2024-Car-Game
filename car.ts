@@ -7,7 +7,7 @@ let keys = { ArrowRight: false, ArrowLeft: false };
 class Car {
   direction: number;
   v: number;
-  coord;
+  coord: { x: number; y: number };
   rotationSpeed: number;
   height: number;
   width: number;
