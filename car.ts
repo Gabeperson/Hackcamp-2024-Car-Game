@@ -51,7 +51,9 @@ class Car {
   }
 }
 
-function collisionDetection() {}
+function collisionDetection(car: Car) {}
+
+function collisionWithTile(tile: Tile, car: Car) {}
 
 document.addEventListener("keydown", (e) => {
   if (keys.hasOwnProperty(e.key)) {
