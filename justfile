@@ -1,4 +1,4 @@
 build:
     ./build.sh
 clean:
-    rm main.js
+    ./clean.sh

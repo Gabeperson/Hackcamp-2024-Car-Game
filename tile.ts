@@ -1,3 +1,4 @@
+var ctx: CanvasRenderingContext2D = globalThis.ctx;
 const SIDE_LENGTH = 50; // change later if needed
 ctx.strokeStyle = "red";
 ctx.lineWidth = 2;
