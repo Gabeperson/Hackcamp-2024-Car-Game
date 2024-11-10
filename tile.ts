@@ -3,7 +3,7 @@ ctx.strokeStyle = "red";
 ctx.lineWidth = 2;
 
 class Tile {
-  edge;
+  edge: { l: boolean, r: boolean, t: boolean, b: boolean };
   x: number;
   y: number;
   sideLength: number;
