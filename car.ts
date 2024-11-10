@@ -49,11 +49,30 @@ class Car {
       Math.min(this.coord.y, CANVAS_HEIGHT - this.height / 2)
     );
   }
+
+  getBoundingBox() {
+    return {
+      left: this.coord.x - this.width / 2,
+      right: this.coord.x + this.width / 2,
+      top: this.coord.y - this.height / 2,
+      bottom: this.coord.y + this.height / 2,
+    };
+  }
 }
 
-function collisionDetection(car: Car) {}
+// function collisionDetection(car: Car) {}
 
-function collisionWithTile(tile: Tile, car: Car) {}
+function collisionWithTile(tile: Tile, car: Car) {
+  const carBox = car.getBoundingBox();
+  const tileBox = tile.getBoundingBox();
+
+  return !(
+    (carBox.right < tileBox.left && tile.edge.l) ||
+    (carBox.left > tileBox.right && tile.edge.r) ||
+    (carBox.bottom < tileBox.top && tile.edge.t) ||
+    (carBox.top > tileBox.bottom && tile.edge.b)
+  );
+}
 
 document.addEventListener("keydown", (e) => {
   if (keys.hasOwnProperty(e.key)) {
