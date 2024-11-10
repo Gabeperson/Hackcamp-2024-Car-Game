@@ -1,21 +1,24 @@
 // width & height
 const CANVAS_WIDTH = 200;
 const CANVAS_HEIGHT = 400;
-// PI constant so we dont have to always type Math.PI
-const PI = Math.PI;
-// canvas
-const canvas = document.getElementById("canvas");
 // key events
 let keys = { ArrowRight: false, ArrowLeft: false };
 
 class Car {
+  direction: number;
+  v: number;
+  coord;
+  rotationSpeed: number;
+  height: number;
+  width: number;
+
   constructor() {
     let direction = PI / 2; // start direction
     let v = 10; // start velocity
     let coord = { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT / 4 }; // coordinates
     let height = 20; // height
     let width = 20; // width
-    rotationSpeed = 0.15;
+    let rotationSpeed = 0.15;
   }
 
   /**
@@ -30,18 +33,20 @@ class Car {
       this.direction -= this.rotationSpeed;
     }
 
+    this.coord.y -= this.v;
+
     // update position based on velocity and direction
-    this.x += Math.cos(this.direction) * this.velocity;
-    this.y -= Math.sin(this.direction) * this.velocity;
+    this.coord.x += Math.cos(this.direction) * this.v;
+    this.coord.y -= Math.sin(this.direction) * this.v;
 
     // keep car in canvas bounds
-    this.x = Math.max(
+    this.coord.x = Math.max(
       this.width / 2,
-      Math.min(this.x, CANVAS_WIDTH - this.width / 2)
+      Math.min(this.coord.x, CANVAS_WIDTH - this.width / 2)
     );
-    this.y = Math.max(
+    this.coord.y = Math.max(
       this.height / 2,
-      Math.min(this.y, CANVAS_HEIGHT - this.height / 2)
+      Math.min(this.coord.y, CANVAS_HEIGHT - this.height / 2)
     );
   }
 }
