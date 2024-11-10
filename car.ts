@@ -33,6 +33,8 @@ class Car {
       this.direction -= this.rotationSpeed;
     }
 
+    this.coord.y -= this.v;
+
     // update position based on velocity and direction
     this.coord.x += Math.cos(this.direction) * this.v;
     this.coord.y -= Math.sin(this.direction) * this.v;
