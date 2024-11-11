@@ -38,7 +38,7 @@ class Car {
     // if (this.coord.y - this.v <= canvas_height) this.coord.y -= this.v;
 
     // update position based on velocity and direction
-    this.coord.x += Math.cos(this.direction) * this.v;
+    this.coord.x += Math.cos(-this.direction) * this.v;
     this.coord.y -= Math.sin(this.direction) * this.v;
 
     // // keep car in canvas bounds
