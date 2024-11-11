@@ -16,11 +16,11 @@ class Car {
 
   constructor() {
     this.direction = Math.PI / 2; // start direction
-    this.v = 1/15; // start velocity
+    this.v = 1; // start velocity
     this.coord = { x: INITIAL_CAR_X, y: INITIAL_CAR_Y }; // coordinates
     this.height = 20; // height
     this.width = 20; // width
-    this.rotationSpeed = 0.05;
+    this.rotationSpeed = 0.01;
   }
 
   /**
