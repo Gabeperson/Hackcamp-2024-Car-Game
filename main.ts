@@ -1,7 +1,44 @@
-enum GameStatus {}
+enum GameStatus { }
+
+let tilemap: TileMap;
+let player: Car;
 
 function tick() {
-  requestAnimationFrame(tick);
+  let af_id = requestAnimationFrame(tick);
+  // Physics update
+  // Move car
+  // TODO:
+
+  // Detect collision:
+  // TODO:
+  for (let [coord, tile] of tilemap) {
+    // Iterate through map and check for physics collisions.
+    // To cancel the loop, call `cancelAnimationFrame(af_id);`
+    // TODO:
+  }
+
+  // Generation
+  // TODO:
+
+  // Garbage Colect
+  // TODO:
+
+  // Render
+  // TODO:
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+
+}
+
+// reset the game state to beginning.
+function reset() {
+  // TODO
+}
+
+// start the game. CALL AFTER reset()
+function start() {
+  // TODO
 }
 
 function test() {
