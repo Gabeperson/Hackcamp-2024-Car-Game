@@ -178,6 +178,7 @@ function generate(
 
     return false; // We're too close, user might see the generation.
   }
+  console.log(from, car);
   // Generation
   let items = dir_map.get(dir)!.slice(0);
   shuffleArray(items);

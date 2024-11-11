@@ -35,7 +35,7 @@ class Car {
       this.direction -= this.rotationSpeed;
     }
 
-    if (this.coord.y - this.v <= canvas_height) this.coord.y -= this.v;
+    // if (this.coord.y - this.v <= canvas_height) this.coord.y -= this.v;
 
     // update position based on velocity and direction
     this.coord.x += Math.cos(this.direction) * this.v;
@@ -50,6 +50,27 @@ class Car {
     //   this.height / 2,
     //   Math.min(this.coord.y, canvas_height - this.height / 2)
     // );
+  }
+
+  renderCar() {
+    ctx.save();
+    ctx.translate(INITIAL_CAR_X, INITIAL_CAR_Y); // Move the car to its coordinates
+    // ctx.rotate(-this.direction); // Rotate the car based on its direction
+  
+    // Draw the car body
+    ctx.fillStyle = "blue";
+    ctx.fillRect(-this.width / 2, -this.height / 2, this.width, this.height);
+  
+    // Draw the front indicator (triangle)
+    ctx.fillStyle = "red";
+    ctx.beginPath();
+    ctx.moveTo(0, -this.height / 2); // Point at the front of the car
+    ctx.lineTo(-this.width / 4, -this.height / 4); // Left side of the triangle
+    ctx.lineTo(this.width / 4, -this.height / 4); // Right side of the triangle
+    ctx.closePath();
+    ctx.fill();
+  
+    ctx.restore();
   }
 
   getBoundingBox() {

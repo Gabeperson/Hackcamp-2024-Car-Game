@@ -67,7 +67,7 @@ function tick() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let [coord, tile] of tilemap) {
     let image = tile.getImage()!;
-    let pcoord: [number, number] = [-player.coord.x, -player.coord.y]
+    let pcoord: [number, number] = [-player.coord.x+INITIAL_CAR_X, -player.coord.y+INITIAL_CAR_Y]
         // let pcoord: [number, number] = [INITIAL_CAR_X, INITIAL_CAR_Y];
 
     let c = addCoord(coord, pcoord);
@@ -80,8 +80,10 @@ function tick() {
       TILE_SIZE*2
     );
   }
-  // renderCar(); //todo
+  player.renderCar(); //todo
 }
+
+
 
 function garbageCollect() {}
 // reset the game state to beginning.
@@ -103,7 +105,7 @@ function test() {
   let tilemap: CustomMap = new CustomMap();
   let dist = 10;
   let gen_dist = TILE_SIZE * TILE_SIZE * dist * dist;
-  let offset: [number, number] = [300, 300];
+  let offset: [number, number] = [200, 300];
   let from = addCoord([0, 0], offset);
   let success = generate(tilemap, [0, 0], Direction.Top, [0, 0], 0, gen_dist);
   console.log(tilemap);
