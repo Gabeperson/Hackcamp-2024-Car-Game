@@ -20,6 +20,7 @@ function tick() {
       // player lost by hitting wall
       cancelAnimationFrame(af_id);
       // show game over
+      ctx.closePath();
     }
   }
 
@@ -33,6 +34,8 @@ function tick() {
   // TODO:
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let [coord, tile] of tilemap) {
+    let image = tile.getImage()!;
+    drawImage(image, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
     let newCoord = addCoord(coord, offset);
     drawRect(newCoord[0], newCoord[1], TILE_SIZE, PI / 2);
   }
