@@ -2,6 +2,10 @@ enum GameStatus {}
 
 let tilemap: TileMap;
 let player: Car;
+let prev = {
+  from: [0, 0] as [number, number],
+  dir: Direction.Top,
+};
 player = new Car();
 
 const VIEW_DIST = 3;
@@ -50,7 +54,14 @@ function tick() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let [coord, tile] of tilemap) {
     let image = tile.getImage()!;
-    // drawImage(image, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
+    drawRoad(image, 
+      player.coord.x, 
+      player.coord.y, 
+      coord[0], 
+      coord[1], 
+      player.direction, 
+      TILE_SIZE*2
+    );
   }
   // renderCar(); //todo
 }
