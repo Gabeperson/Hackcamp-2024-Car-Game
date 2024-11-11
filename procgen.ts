@@ -1,4 +1,4 @@
-const TILE_SIZE = 30;
+const TILE_SIZE = 50;
 
 // Procedural generation
 enum Direction {
@@ -159,6 +159,7 @@ function generate(
 ): boolean {
   let distX = Math.abs(car[0] - from[0]);
   let distY = Math.abs(car[1] - from[1]);
+  console.log(distX, distY, view_dist, gen_dist, from, dir);
   let sqDist = distX * distX + distY * distY;
   let offset = dir_to_offset(dir);
   let newLoc: [number, number] = addCoord(from, offset);
@@ -168,7 +169,11 @@ function generate(
     return false; // This tile already has a road. We need to backtrack!
   }
   if (sqDist > gen_dist) {
-    return true; // we're good. no backtracking needed
+    // we're good. no backtracking needed. We save current progress and leave.
+    // we didn't update the current location, so we'll just start again from here.
+    prev.from = from;
+    prev.dir = dir;
+    return true; 
   }
   if (sqDist < view_dist) {
 

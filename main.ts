@@ -1,6 +1,6 @@
 enum GameStatus {}
 
-let tilemap: TileMap;
+let tilemap: TileMap = new CustomMap();
 let player: Car;
 let prev = {
   from: [0, 0] as [number, number],
@@ -12,28 +12,37 @@ const VIEW_DIST = 3;
 const GEN_RANGE = 10;
 
 function tick() {
-  let af_id = requestAnimationFrame(tick);
+  let af_id = setTimeout(tick, 5000);
+  // let af_id = requestAnimationFrame(tick);
+  // console.log("ran");
   // Physics update
   // Move car
   // TODO:
   player.update();
   // Detect collision:
   // TODO:
-  for (let [coord, tile] of tilemap) {
-    // Iterate through map and check for physics collisions.
-    // To cancel the loop, call `cancelAnimationFrame(af_id);`
-    // TODO:
-    if (collisionWithTile(tile, player)) {
-      // player lost by hitting wall
-      cancelAnimationFrame(af_id);
-      // show game over
-      ctx.closePath();
-      window.location.replace("./menu/restartGame.html");
-    }
-  }
+  // for (let [coord, tile] of tilemap) {
+  //   // Iterate through map and check for physics collisions.
+  //   // To cancel the loop, call `cancelAnimationFrame(af_id);`
+  //   // TODO:
+  //   if (collisionWithTile(tile, player)) {
+  //     // player lost by hitting wall
+  //     cancelAnimationFrame(af_id);
+  //     // show game over
+  //     ctx.closePath();
+  //     window.location.replace("./menu/restartGame.html");
+  //   }
+  // }
 
   // Generation
   // TODO:
+  console.log(tilemap);
+  if (!generate(tilemap, prev.from, prev.dir, [player.coord.x, player.coord.y],
+    VIEW_DIST*VIEW_DIST, GEN_RANGE*GEN_RANGE
+  )) {
+    alert("FAIL");
+  }
+  console.log(tilemap);
 
   // Garbage Colect
   // TODO:
@@ -58,11 +67,13 @@ function tick() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let [coord, tile] of tilemap) {
     let image = tile.getImage()!;
+    let pcoord: [number, number] = [player.coord.x, player.coord.y]
+    let c = addCoord(coord, pcoord);
     drawRoad(image, 
       player.coord.x, 
       player.coord.y, 
-      coord[0], 
-      coord[1], 
+      c[0], 
+      c[1], 
       player.direction, 
       TILE_SIZE*2
     );
@@ -73,12 +84,17 @@ function tick() {
 function garbageCollect() {}
 // reset the game state to beginning.
 function reset() {
-  // TODO
+  player = new Car();
+  prev.from = [player.coord.x, player.coord.y-TILE_SIZE/2];
 }
 
-// start the game. CALL AFTER reset()
+// start the game. 
 function start() {
-  // TODO
+  reset();
+  generate(tilemap, prev.from, prev.dir, [player.coord.x, player.coord.y],
+    0, GEN_RANGE*GEN_RANGE*TILE_SIZE*TILE_SIZE,
+  )
+  tick();
 }
 
 function test() {
