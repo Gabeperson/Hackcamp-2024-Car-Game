@@ -1,8 +1,8 @@
 // width & height
 // const CANVAS_WIDTH = 200;
 // const CANVAS_HEIGHT = 400;
-const INITIAL_CAR_X = 20;
-const INITIAL_CAR_Y = 20;
+const INITIAL_CAR_X = 300;
+const INITIAL_CAR_Y = 300;
 // key events
 let keys = { ArrowRight: false, ArrowLeft: false };
 
@@ -41,15 +41,15 @@ class Car {
     this.coord.x += Math.cos(this.direction) * this.v;
     this.coord.y -= Math.sin(this.direction) * this.v;
 
-    // keep car in canvas bounds
-    this.coord.x = Math.max(
-      this.width / 2,
-      Math.min(this.coord.x, canvas_width - this.width / 2)
-    );
-    this.coord.y = Math.max(
-      this.height / 2,
-      Math.min(this.coord.y, canvas_height - this.height / 2)
-    );
+    // // keep car in canvas bounds
+    // this.coord.x = Math.max(
+    //   this.width / 2,
+    //   Math.min(this.coord.x, canvas_width - this.width / 2)
+    // );
+    // this.coord.y = Math.max(
+    //   this.height / 2,
+    //   Math.min(this.coord.y, canvas_height - this.height / 2)
+    // );
   }
 
   getBoundingBox() {
