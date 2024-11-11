@@ -87,9 +87,9 @@ let dir_map = new Map<Direction, Direction[]>([
 function dir_to_offset(dir: Direction): [number, number] {
   switch (dir) {
     case Direction.Bottom:
-      return [0, -TILE_SIZE];
-    case Direction.Top:
       return [0, TILE_SIZE];
+    case Direction.Top:
+      return [0, -TILE_SIZE];
     case Direction.Left:
       return [-TILE_SIZE, 0];
     case Direction.Right:

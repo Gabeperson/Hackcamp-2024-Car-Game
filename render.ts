@@ -46,6 +46,7 @@ function drawImage(
   height: number,
   rot: number
 ) {
+  rot = rot - PI / 2;
   ctx.translate(x, y);
   ctx.rotate(rot);
   ctx.drawImage(image, -width / 2, -height / 2, width, height);

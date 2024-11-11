@@ -61,11 +61,12 @@ function test() {
   console.log(success);
   let arr: [[number, number], number][] = [];
   for (let [coord, tile] of tilemap) {
+    console.log(tile.id);
     console.log(tile.edge);
     let newCoord = addCoord(coord, offset);
     let image = tile.getImage()!;
     // drawImage(IMAGE_UP_DOWN, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
-    drawImage(image, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
+    drawImage(image, newCoord[0], newCoord[1], TILE_SIZE*2, TILE_SIZE*2, PI / 2);
 
     drawText(newCoord[0], newCoord[1], tile.id!.toString());
     arr.push([coord, tile.id!]);
@@ -76,7 +77,7 @@ function test() {
   let prev = offset;
   for (let [coord, id] of arr) {
     let c = addCoord(coord, offset);
-    drawLine(prev, c);
+    // drawLine(prev, c);
     prev = c;
   }
   console.log(tilemap.size());
