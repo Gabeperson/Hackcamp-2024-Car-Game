@@ -46,7 +46,7 @@ function drawImage(
   height: number,
   rot: number
 ) {
-  rot = rot - PI / 2;
+  rot = rot;
   ctx.translate(x, y);
   ctx.rotate(rot);
   ctx.drawImage(image, -width / 2, -height / 2, width, height);
@@ -54,16 +54,8 @@ function drawImage(
   ctx.translate(-x, -y);
 }
 
-function drawLine(start: [number, number], end: [number, number]) {
-  let [sx, sy] = start;
-  let [ex, ey] = end;
-  ctx.beginPath();
-  ctx.moveTo(sx, sy);
-  ctx.lineTo(ex, ey);
-  ctx.stroke();
-}
-
 function drawRoad(
+  image: HTMLImageElement,
   carX: number,
   carY: number,
   roadX: number,
@@ -75,7 +67,16 @@ function drawRoad(
   let relX = carX - roadX;
   let relY = carY - roadY;
   let { newX, newY } = rotateAroundOrigin(relX, relY, rot);
-  drawRect(newX + carX, newY + carY, roadSize, rot);
+  drawImage(image, newX + carX, newY + carY, roadSize+1, roadSize+1, rot - PI);
+}
+
+function drawLine(start: [number, number], end: [number, number]) {
+  let [sx, sy] = start;
+  let [ex, ey] = end;
+  ctx.beginPath();
+  ctx.moveTo(sx, sy);
+  ctx.lineTo(ex, ey);
+  ctx.stroke();
 }
 
 // Resize canvas

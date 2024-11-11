@@ -81,7 +81,7 @@ function test() {
     let newCoord = addCoord(coord, offset);
     let image = tile.getImage()!;
     // drawImage(IMAGE_UP_DOWN, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
-    drawImage(image, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
+    drawRoad(image, 300, 300, newCoord[0], newCoord[1], PI/2+PI/4, TILE_SIZE*2);
 
     drawText(newCoord[0], newCoord[1], tile.id!.toString());
     arr.push([coord, tile.id!]);
