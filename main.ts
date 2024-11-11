@@ -33,7 +33,8 @@ function tick() {
 
   // Garbage Colect
   // TODO:
-  let outOfRange = [];
+  let outOfRange: [number, number][] = [];
+
   for (let [coord, tile] of tilemap) {
     let dx = coord[0] - player.coord.x;
     let dy = coord[1] - player.coord.y;
@@ -43,6 +44,10 @@ function tick() {
     if (distSquared > genDistSquared) {
       outOfRange.push(coord);
     }
+  }
+
+  for (let i = 0; i < outOfRange.length; i++) {
+    tilemap.delete(outOfRange[i]);
   }
 
   // Render
@@ -81,7 +86,15 @@ function test() {
     let newCoord = addCoord(coord, offset);
     let image = tile.getImage()!;
     // drawImage(IMAGE_UP_DOWN, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
-    drawRoad(image, 300, 300, newCoord[0], newCoord[1], PI/2+PI/4, TILE_SIZE*2);
+    drawRoad(
+      image,
+      300,
+      300,
+      newCoord[0],
+      newCoord[1],
+      PI / 2 + PI / 4,
+      TILE_SIZE * 2
+    );
 
     drawText(newCoord[0], newCoord[1], tile.id!.toString());
     arr.push([coord, tile.id!]);
