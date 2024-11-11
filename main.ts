@@ -49,7 +49,6 @@ function tick() {
   for (let i = 0; i < outOfRange.length; i++) {
     tilemap.delete(outOfRange[i]);
   }
-
   // Render
   // TODO:
   ctx.clearRect(0, 0, canvas.width, canvas.height);
