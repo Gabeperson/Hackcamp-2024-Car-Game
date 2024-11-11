@@ -4,6 +4,9 @@ let tilemap: TileMap;
 let player: Car;
 player = new Car();
 
+const VIEW_DIST = 3;
+const GEN_RANGE = 10;
+
 function tick() {
   let af_id = requestAnimationFrame(tick);
   // Physics update
@@ -30,6 +33,17 @@ function tick() {
 
   // Garbage Colect
   // TODO:
+  let outOfRange = [];
+  for (let [coord, tile] of tilemap) {
+    let dx = coord[0] - player.coord.x;
+    let dy = coord[1] - player.coord.y;
+    let distSquared = dx * dx + dy * dy;
+    let genDistSquared = GEN_RANGE * GEN_RANGE * TILE_SIZE * TILE_SIZE;
+
+    if (distSquared > genDistSquared) {
+      outOfRange.push(coord);
+    }
+  }
 
   // Render
   // TODO:
@@ -41,6 +55,7 @@ function tick() {
   // renderCar(); //todo
 }
 
+function garbageCollect() {}
 // reset the game state to beginning.
 function reset() {
   // TODO
