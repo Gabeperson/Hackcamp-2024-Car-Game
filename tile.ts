@@ -11,32 +11,32 @@ ctx.lineWidth = 2;
 
 const IMAGE_UP_DOWN = function () {
   let elem = new Image();
-  elem.src = "./road_images/image_top_down.webp";
+  elem.src = "./road_images/straight.png";
   return elem;
 }();
 const IMAGE_UP_TURN_RIGHT = function () {
   let elem = new Image();
-  elem.src = "./road_images/image_left_up.webp";
+  elem.src = "./road_images/rightup.png";
   return elem;
 }();
 const IMAGE_DOWN_TURN_LEFT = function () {
   let elem = new Image();
-  elem.src = "./road_images/image_up_right.webp";
+  elem.src = "./road_images/leftdown.png";
   return elem;
 }();
 const IMAGE_DOWN_TURN_RIGHT = function () {
   let elem = new Image();
-  elem.src = "./road_images/image-down-right.webp";
+  elem.src = "./road_images/rightdown.png";
   return elem;
 }();
 const IMAGE_UP_TURN_LEFT = function () {
   let elem = new Image();
-  elem.src = "./road_images/image-left-down.webp";
+  elem.src = "./road_images/leftup.png";
   return elem;
 }();
 const IMAGE_SIDE = function () {
   let elem = new Image();
-  elem.src = "./road_images/image-side.webp";
+  elem.src = "./road_images/sideway.png";
   return elem;
 }();
 
@@ -75,19 +75,19 @@ class Tile {
     }
 
     if (!this.edge.t && !this.edge.r) {
-      return IMAGE_DOWN_TURN_RIGHT;
-    }
-
-    if (!this.edge.t && !this.edge.l) {
-      return IMAGE_DOWN_TURN_LEFT;
-    }
-
-    if (!this.edge.r && !this.edge.b) {
       return IMAGE_UP_TURN_RIGHT;
     }
 
-    if (!this.edge.l && !this.edge.b) {
+    if (!this.edge.t && !this.edge.l) {
       return IMAGE_UP_TURN_LEFT;
+    }
+
+    if (!this.edge.r && !this.edge.b) {
+      return IMAGE_DOWN_TURN_RIGHT;
+    }
+
+    if (!this.edge.l && !this.edge.b) {
+      return IMAGE_DOWN_TURN_LEFT;
     }
   }
 }

@@ -35,9 +35,7 @@ function tick() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let [coord, tile] of tilemap) {
     let image = tile.getImage()!;
-    drawImage(image, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
-    let newCoord = addCoord(coord, offset);
-    drawRect(newCoord[0], newCoord[1], TILE_SIZE, PI / 2);
+    // drawImage(image, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
   }
   // renderCar(); //todo
 }
@@ -54,7 +52,7 @@ function start() {
 
 function test() {
   let tilemap: CustomMap = new CustomMap();
-  let dist = 20;
+  let dist = 10;
   let gen_dist = TILE_SIZE * TILE_SIZE * dist * dist;
   let offset: [number, number] = [300, 300];
   let from = addCoord([0, 0], offset);
@@ -63,9 +61,12 @@ function test() {
   console.log(success);
   let arr: [[number, number], number][] = [];
   for (let [coord, tile] of tilemap) {
+    console.log(tile.edge);
     let newCoord = addCoord(coord, offset);
     let image = tile.getImage()!;
+    // drawImage(IMAGE_UP_DOWN, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
     drawImage(image, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
+
     drawText(newCoord[0], newCoord[1], tile.id!.toString());
     arr.push([coord, tile.id!]);
   }

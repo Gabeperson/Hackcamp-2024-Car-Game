@@ -1,4 +1,4 @@
-const TILE_SIZE = 10;
+const TILE_SIZE = 30;
 
 // Procedural generation
 enum Direction {
@@ -128,17 +128,20 @@ function addCoord(
 
 //     return items[i];
 // }
-
 function updateTileBoundary(tile: Tile, dir: Direction) {
   switch (dir) {
     case Direction.Bottom:
       tile.edge.b = false;
+      return;
     case Direction.Top:
       tile.edge.t = false;
+      return;
     case Direction.Left:
       tile.edge.l = false;
+      return;
     case Direction.Right:
       tile.edge.r = false;
+      return;
   }
 }
 
@@ -154,7 +157,6 @@ function generate(
   view_dist: number,
   gen_dist: number
 ): boolean {
-  console.log("Ran");
   let distX = Math.abs(car[0] - from[0]);
   let distY = Math.abs(car[1] - from[1]);
   let sqDist = distX * distX + distY * distY;
@@ -163,15 +165,12 @@ function generate(
   // console.log(newLoc);
   // console.log(map);
   if (map.get(newLoc) != undefined) {
-    console.log("Ran2");
     return false; // This tile already has a road. We need to backtrack!
   }
   if (sqDist > gen_dist) {
-    console.log("Ran3");
     return true; // we're good. no backtracking needed
   }
   if (sqDist < view_dist) {
-    console.log("Ran4");
 
     return false; // We're too close, user might see the generation.
   }
@@ -196,7 +195,6 @@ function generate(
       view_dist,
       gen_dist
     );
-    console.log(res);
     if (res) {
       // Succeeded, we also return true.
       return true;
