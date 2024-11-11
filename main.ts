@@ -1,20 +1,26 @@
-enum GameStatus { }
+enum GameStatus {}
 
 let tilemap: TileMap;
 let player: Car;
+player = new Car();
 
 function tick() {
   let af_id = requestAnimationFrame(tick);
   // Physics update
   // Move car
   // TODO:
-
+  player.update();
   // Detect collision:
   // TODO:
   for (let [coord, tile] of tilemap) {
     // Iterate through map and check for physics collisions.
     // To cancel the loop, call `cancelAnimationFrame(af_id);`
     // TODO:
+    if (collisionWithTile(tile, player)) {
+      // player lost by hitting wall
+      cancelAnimationFrame(af_id);
+      // show game over
+    }
   }
 
   // Generation
@@ -26,9 +32,11 @@ function tick() {
   // Render
   // TODO:
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-
-
+  for (let [coord, tile] of tilemap) {
+    let newCoord = addCoord(coord, offset);
+    drawRect(newCoord[0], newCoord[1], TILE_SIZE, PI / 2);
+  }
+  // renderCar(); //todo
 }
 
 // reset the game state to beginning.
