@@ -8,3 +8,4 @@ mv procgen.js web/
 mv render.js web/
 cp index.html web/
 cp vec2.js web/
+cp road_images web/ -r

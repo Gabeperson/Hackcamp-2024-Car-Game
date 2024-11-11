@@ -61,7 +61,8 @@ function test() {
   let arr: [[number, number], number][] = [];
   for (let [coord, tile] of tilemap) {
     let newCoord = addCoord(coord, offset);
-    drawRect(newCoord[0], newCoord[1], TILE_SIZE, PI / 2);
+    let image = tile.getImage()!;
+    drawImage(image, newCoord[0], newCoord[1], TILE_SIZE, TILE_SIZE, PI / 2);
     drawText(newCoord[0], newCoord[1], tile.id!.toString());
     arr.push([coord, tile.id!]);
   }
