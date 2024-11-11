@@ -159,7 +159,6 @@ function generate(
 ): boolean {
   let distX = Math.abs(car[0] - from[0]);
   let distY = Math.abs(car[1] - from[1]);
-  console.log(distX, distY, view_dist, gen_dist, from, dir);
   let sqDist = distX * distX + distY * distY;
   let offset = dir_to_offset(dir);
   let newLoc: [number, number] = addCoord(from, offset);
@@ -206,7 +205,6 @@ function generate(
     } else {
       // Failure bubbled up, we test next option.
       map.delete(newLoc);
-      console.log("ran!!!!!");
       __generate_id--;
       continue;
     }

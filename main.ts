@@ -12,8 +12,8 @@ const VIEW_DIST = 3;
 const GEN_RANGE = 10;
 
 function tick() {
-  let af_id = setTimeout(tick, 5000);
-  // let af_id = requestAnimationFrame(tick);
+  // let af_id = setTimeout(tick, 10);
+  let af_id = requestAnimationFrame(tick);
   // console.log("ran");
   // Physics update
   // Move car
@@ -36,13 +36,13 @@ function tick() {
 
   // Generation
   // TODO:
-  console.log(tilemap);
+  // console.log(tilemap);
   if (!generate(tilemap, prev.from, prev.dir, [player.coord.x, player.coord.y],
     VIEW_DIST*VIEW_DIST, GEN_RANGE*GEN_RANGE
   )) {
     alert("FAIL");
   }
-  console.log(tilemap);
+  // console.log(tilemap);
 
   // Garbage Colect
   // TODO:
@@ -68,6 +68,8 @@ function tick() {
   for (let [coord, tile] of tilemap) {
     let image = tile.getImage()!;
     let pcoord: [number, number] = [player.coord.x, player.coord.y]
+        // let pcoord: [number, number] = [INITIAL_CAR_X, INITIAL_CAR_Y];
+
     let c = addCoord(coord, pcoord);
     drawRoad(image, 
       player.coord.x, 

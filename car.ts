@@ -1,6 +1,8 @@
 // width & height
-const CANVAS_WIDTH = 200;
-const CANVAS_HEIGHT = 400;
+// const CANVAS_WIDTH = 200;
+// const CANVAS_HEIGHT = 400;
+const INITIAL_CAR_X = 20;
+const INITIAL_CAR_Y = 20;
 // key events
 let keys = { ArrowRight: false, ArrowLeft: false };
 
@@ -14,8 +16,8 @@ class Car {
 
   constructor() {
     this.direction = Math.PI / 2; // start direction
-    this.v = 1/120; // start velocity
-    this.coord = { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT / 4 }; // coordinates
+    this.v = 1/15; // start velocity
+    this.coord = { x: INITIAL_CAR_X, y: INITIAL_CAR_Y }; // coordinates
     this.height = 20; // height
     this.width = 20; // width
     this.rotationSpeed = 0.05;
@@ -33,7 +35,7 @@ class Car {
       this.direction -= this.rotationSpeed;
     }
 
-    if (this.coord.y - this.v <= CANVAS_HEIGHT) this.coord.y -= this.v;
+    if (this.coord.y - this.v <= canvas_height) this.coord.y -= this.v;
 
     // update position based on velocity and direction
     this.coord.x += Math.cos(this.direction) * this.v;
@@ -42,11 +44,11 @@ class Car {
     // keep car in canvas bounds
     this.coord.x = Math.max(
       this.width / 2,
-      Math.min(this.coord.x, CANVAS_WIDTH - this.width / 2)
+      Math.min(this.coord.x, canvas_width - this.width / 2)
     );
     this.coord.y = Math.max(
       this.height / 2,
-      Math.min(this.coord.y, CANVAS_HEIGHT - this.height / 2)
+      Math.min(this.coord.y, canvas_height - this.height / 2)
     );
   }
 
